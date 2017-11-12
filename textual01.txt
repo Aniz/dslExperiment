@@ -1,67 +1,85 @@
-Create Rise rise@email.com password
+
+Create RiseEvents rise password
 
 add User
+		
+	types Associado,Profissional,Estudante.		
 	show Insert Update Search Remove ListAll
-	types Associado,Profissional,Estudante.
 
-add Organizer 
-    show Insert Update Search Remove ListAll
-    types GeneralChair, 
-		ProgramChair, 
-		WorkshopChair, 
+add Organizer
+	types 
+		GeneralChair,
+		ProgramChair,
+		WorkshopChair,
 		TutorialChair,
 		ProceedingsChair,
 		PanelChair.
-
-add Reviewer 
+			
 	show Insert Update Search Remove ListAll
-
-add Speaker 
+	
+add Speaker	
 	show Insert Update Search Remove ListAll
-
-add Event 
-    show Insert Update Search Remove ListAll Management
-		
-add Payment
-	show Insert Update Search Remove ListAll Management 
-	types Avista,Debito,Credito.
-
-add Activity
+	
+add Reviewer	
+	show Insert Update Search Remove ListAll
+		 
+add Event
+					
 	show Insert Update Search Remove ListAll Management
-	types MiniCurso = Mini, 
-		Tutorial, 
-		Painel, 
+
+add Activity		
+	types 
+		MiniCurso,
+		Tutorial,
+		Painel,
 		Workshop,
-		MainTrack = hidden.
+		MainTrack .
+	show Insert Update Search Remove ListAll Management
 
-add Submission
+add Payment		
+	types AVista,Credito,Debito.
+	show Insert Update Search Remove ListAll Management
+		
+add Submission		
+	types Parcial,Completa.
 	show Search Remove ListAll
-	types Completa,Parcial.
-
-add Author
-show in User
-	types Associado,Profissional,Estudante.
 
 add CheckingCopy
-show Insert Update Remove Search ListAll Management
+		
 	types Atestado,Certificado.
+	show Insert Update Search Remove ListAll Management
+		
+add Author
+			
+add Assignment
+	show Insert Search Remove ListAll Management
 
-addNew NewOption
-show Insert Update Remove Search ListAll
-types newType1,newType2.
+add Receipt		
+	show Management
+		
+def User->userSendBugTrackEmail
 
-if Payment.Credito -> askCardInfo 
-if Payment.Debito -> generateCarne
-if Payment.Avista -> generateBoleto
+if Reviewer->reviewerRoundofReview
 
-if CheckingCopy.Atestado -> checkingCopyAtestado
-if CheckingCopy.Certificado -> checkingCopyCertificado 
-if CheckiCopy.Certificado -> checkingCopyCertificado 
+def Event->eventImportantDates	 
+def Event->reportsFrequencyPerEvent	 
+def Event->eventProgram 
 
-def Event -> program
-def Event -> importantDates
-def Event -> reportsFrequencyPerEvent 
+def Activity->reportsFrequencyPerActivity
+def Activity->reportsListOfAuthors
 
-if Submission.Completa -> insertAttachment
+if Payment.Debito->generateCarne	 
+if Payment.AVista->generateBoleto	 
+if Payment.Credito->askCardInfo
 
-def User -> sendBugTrackEmail
+def Submission->submissionCompleteInsert
+def Submission->submissionPartialInsert
+if Submission.Completa->submissionInsertAttachment
+
+if CheckingCopy.Certificado->checkingCopyCertificado
+if CheckingCopy.Atestado->checkingCopyAtestado
+
+if Assignment->notificationsAceptanceRejection
+if Assignment->notificationPaperAssignment
+if Assignment->assignmentInterestConflict 
+if Assignment->notificationsDeadline

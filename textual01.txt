@@ -2,8 +2,10 @@
 Create RiseEvents rise password
 
 add User
-		
-	types Associado,Profissional,Estudante.		
+	types 
+		Associado,
+		Profissional,
+		Estudante.		
 	show Insert Update Search Remove ListAll
 
 add Organizer
@@ -13,8 +15,7 @@ add Organizer
 		WorkshopChair,
 		TutorialChair,
 		ProceedingsChair,
-		PanelChair.
-			
+		PanelChair.		
 	show Insert Update Search Remove ListAll
 	
 add Speaker	
@@ -23,8 +24,7 @@ add Speaker
 add Reviewer	
 	show Insert Update Search Remove ListAll
 		 
-add Event
-					
+add Event		
 	show Insert Update Search Remove ListAll Management
 
 add Activity		
@@ -45,7 +45,6 @@ add Submission
 	show Search Remove ListAll
 
 add CheckingCopy
-		
 	types Atestado,Certificado.
 	show Insert Update Search Remove ListAll Management
 		

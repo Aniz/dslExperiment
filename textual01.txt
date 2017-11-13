@@ -79,6 +79,6 @@ if CheckingCopy.Certificado->checkingCopyCertificado
 if CheckingCopy.Atestado->checkingCopyAtestado
 
 if Assignment->notificationsAceptanceRejection
-if Assignment->notificationPaperAssignment
+if Assignment->notificationsPaperAssignment
 if Assignment->assignmentInterestConflict 
 if Assignment->notificationsDeadline

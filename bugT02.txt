@@ -7,56 +7,57 @@ Create rise "/dev/cu.usbmodem411"
     set AutomaticDoors Sensor as INFO
     set Led Actuator as INFO
   	
-  use Optional UserAirConditionerControl
-			  actuator: AirConditioner
-				serial: 5575292698449566428L
+  	use Optional UserAirConditionerControl
+		actuator: AirConditioner
+		serial: 5575292698449566428L
 		
 	use Alternative AutomatedAirConditionerControl
-		  extends: UserAirConditionerControl			
-			alternatives: AutomatedWindowControl
-			actuator: AirConditioner
-			sensor: TemperatureSensor
-			serial: 4435596811596503762L
+		extends: UserAirConditionerControl			
+		alternatives: AutomatedWindowControl
+		actuator: AirConditioner
+		sensor: TemperatureSensor
+		serial: 4435596811596503762L
 		
 	use Optional UserWindowControl
-			serial: 5575292698449566428L
+		serial: 5575292698449566428L
 		
 	use Alternative AutomatedWindowControl
-		  extends: UserWindowControl			
-			alternatives: AutomatedAirConditionerControl
-			sensor: TemperatureSensor
-			serial: 4435596811596503762L
+		extends: UserWindowControl			
+		alternatives: AutomatedAirConditionerControl
+		sensor: TemperatureSensor
+		serial: 4435596811596503762L
 		
 	use Mandatory UserIlumination
-			actuator: Led
-			serial: 4435596811596503762L
+		actuator: Led
+		serial: 4435596811596503762L
 		
 	use OR AutomatedIluminationByLuminosity
-		  extends: UserIlumination			
-		  brother: AutomatedIluminationByPresence			
-			actuator: Led
-			sensor: LightSensor
-			serial: 4435596811596503762L
+		extends: UserIlumination			
+		OR: AutomatedIluminationByPresence			
+		actuator: Led
+		sensor: LightSensor
+		serial: 4435596811596503762L
 		
 	use Optional AlarmAgainstRobbery	
-			actuator: Alarn
-			serial: 5575292698449566428L
+		actuator: Alarn
+		serial: 5575292698449566428L
 		
 	use Mandatory PresenceIlusion
-			actuator: Led
-			serial: 4435596811596503762L
+		actuator: Led
+		serial: 4435596811596503762L
 		
 	use Optional LockDoors
-			actuator: AutomaticDoors
-			serial: 4435596811596503762L
+		actuator: AutomaticDoors
+		serial: 4435596811596503762L
 		
 	use Optional AutomatedIluminationByPresence
-		  extends: PresenceIlusion			
-			actuator: Led
-			sensor: PresenceSensor
-			serial: 4435596811596503762L
+		extends: PresenceIlusion	
+		OR: AutomatedIluminationByLuminosity
+		actuator: Led
+		sensor: PresenceSensor
+		serial: 4435596811596503762L
 		
-	use OR UserAirConditionerControl
-			
-					
-	
+	use Optional UserAirConditionerControl
+		actuator: AirConditioner
+		serial: 5575292698449566428L
+		

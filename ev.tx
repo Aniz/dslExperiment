@@ -1,0 +1,49 @@
+grammar event;
+prog:   
+    'Create' ID 
+    (Component)+
+;
+
+Component:  
+     Option | Statment 
+;
+
+Statment: 
+  ('if' | 'def)+ Entity 
+  ('.' ID)*
+  '->' ActionType
+;
+
+Option:
+  'add' Entity   
+  ('types' (ID)+)*
+  ('show' CommandType)*
+;
+
+Entity:
+  'Speaker'|'Organizer'|'User'|'Event'|'Payment'| 'Activity' | 'Assignment'|'Submission'|'Reviewer'|'Author' | 'CheckingCopy' | 'Receipt' | 'Review'
+;
+
+CommandType:
+  'Insert' | 'Remove' | 'Update' | 'Search' | 'ListAll' | 'Search' | 'Management'
+;
+
+ActionType:
+   'userSendBugTrackEmail' | 
+   'submissionInsertAttachment' | 
+   'submissionCompleteInsert' |
+   'submissionPartialInsert' |
+   'assignmentInterestConflict' |
+   'assigmentChairIndication' | 
+   'assigmentAutomtic' | 
+  'reportsListOfAuthors' |
+  'reportsFrequencyPerActivity' |
+  'checkingCopyAtestado' | 'checkingCopyCertificado' | 
+  'eventProgram' | 'eventImportantDates' | 'reportsFrequencyPerEvent'| 
+  'generateCarne' | 'generateBoleto' | 'askCardInfo' | 
+  'notificationsDeadline' | 
+  'notificationPaperAssignment' | 'notificationsAceptanceRejection' |
+  'reviewerRoundofReview'
+;
+
+ID  :   ('a'..'z'|'A'..'Z')+ ;

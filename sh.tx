@@ -1,0 +1,44 @@
+grammar smarthome;
+
+program: 
+  'Create' ID ID
+  (Component)+
+;
+
+Component:  
+     Device | Feature 
+;
+
+TypeDevice:
+'Sensor' | 'Actuator' | 'Hardware'
+;
+
+SimpleType:
+'BOOL'|'RANGE'|'INFO'
+;
+
+Device:
+  'set' ID TypeDevice
+  'as' SimpleType 
+;
+
+Feature:
+  'use' Type Entity 
+  ('extends:' Feature)*
+  ('alternatives:' Feature)*
+  ('OR:' Feature)*
+  'actuator:' Device  
+  ('sensor:' Device)* 
+  'serial:' STRING  
+;
+
+Type: 
+  'Mandatory' | 'Optional' | 'Alternative' | 'OR'
+;
+
+Entity:
+  'AlarmAgainstRobbery'|'AutomatedAirConditionerControl'|'AutomatedIluminationByLuminosity'| 'AutomatedIluminationByPresence' |'AutomatedWindowControl'|'LockDoors'| 'PanicMode' | 'PresenceIlusion'|'UserAirConditionerControl'|'UserIlumination'|'UserWindowControl'
+;
+
+ID  :   ('a'..'z'|'A'..'Z')+ ;
+
